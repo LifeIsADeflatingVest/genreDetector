@@ -1,0 +1,62 @@
+body {
+  background-color:black;
+  color:silver;
+  margin: 0;
+  padding:5%;
+  font-family: serif;
+  text-align:center;
+}
+
+p {
+	font-size:1.3em;
+}
+
+button {
+  display: inline-block;
+  background-color: #4CAF50;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+/* Style the file input element */
+input[type="file"] {
+  background-color: #FFFFFF;
+  border: 2px solid #CCCCCC;
+  border-radius: 5px;
+  color: #333333;
+  font-size: 16px;
+  padding: 8px;
+}
+
+/* Style the text of the file input element */
+input[type="file"]::placeholder {
+  color: #999999;
+}
+
+/* Style the border of the file input element when hovered */
+input[type="file"]:hover {
+  border-color: #999999;
+}
+
+/* Style the border of the file input element when focused */
+input[type="file"]:focus {
+  outline: none;
+  border-color: #007ACC;
+  box-shadow: 0 0 3px rgba(0, 122, 204, 0.5);
+}
+
+#result {
+    padding: 2.5em;
+    min-height: 3em;
+    border-radius: 0.7em;
+}
