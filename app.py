@@ -4,13 +4,13 @@ from scriptWebFile import classify_text
 app = Flask(__name__)
 
 @app.route('/classify', methods=['POST'])
-def example():
-    if request.method == 'POST':
-        data = request.data.decode('utf-8')
-        #return data
-        #text = data['text']
-        genres, sentiments = classify_text(data)
-        return jsonify({'genres': genres, 'sentiments': sentiments})
+def process_array():
+    data = request.get_json()
+    my_array = data.get('submittedArray', [])
+    print("Length of my_array is:", len(my_array))
+    print("First element of my_array is:", my_array[0])
+    average_score = classify_text(my_array)
+    return jsonify(average_score)
 
 @app.route('/')
 def home():
