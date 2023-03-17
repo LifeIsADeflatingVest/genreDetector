@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Split Text into Sentences</title>
+  </head>
+  <body>
+    <h1>Split Text into Sentences</h1>
+    <input type="file" id="input-file" accept=".txt" />
+    <button id="process-btn">Process Text</button>
+
+    <script>
+      const inputFileEl = document.getElementById('input-file');
+      const processBtnEl = document.getElementById('process-btn');
+
+      processBtnEl.addEventListener('click', () => {
+        const inputFile = inputFileEl.files[0];
+
+        if (!inputFile) {
+          alert('Please select an input file');
+          return;
+        }
+
+        const label = 'romance';
+
+        const fileReader = new FileReader();
+        fileReader.readAsText(inputFile);
+
+        fileReader.onload = function() {
+          const sentences = fileReader.result.match(/[^.!?]+[.!?]+/g);
+          const data = sentences.map((sentence) => [sentence.trim(), label]);
+          
+          const exportData = JSON.stringify(data);
+          const exportBlob = new Blob([exportData], { type: 'application/json' });
+          const exportLink = document.createElement('a');
+
+          exportLink.href = URL.createObjectURL(exportBlob);
+          exportLink.download = 'output.json';
+          exportLink.click();
+        };
+      });
+    </script>
+  </body>
+</html>
